@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import TextInput from '../shared/TextInput'
 import Button from '../shared/Button'
 
-const CreateNewColumnModal = (onClose) => {
+const CreateNewColumnModal = ({ onClose }) => {
   const { createColumn } = useBoards()
   const validate = Yup.object({
     name: Yup.string().required('cannot keep empty'),

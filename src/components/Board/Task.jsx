@@ -21,13 +21,15 @@ const Task = ({ data, index }) => {
       {(provided) => (
         <>
           <li
-            className="group select-none shadow-main px-4 py-6 rounded-lg cursor-pointer"
+            className="group select-none shadow-main px-4 py-6 rounded-lg cursor-pointer bg-purple-300 text-black dark:bg-darkGrey dark:text-white"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             onClick={() => setOpenTaskModal(true)}>
-            <h4>{data.title}</h4>
-            <p>
+            <h4 className="heading-md mb-2 group-hover:text-mainPurple">
+              {data.title}
+            </h4>
+            <p className="body-md text-blue-950">
               {completedSubtasks} of {data.subtasks.length} subtasks
             </p>
           </li>

@@ -3,15 +3,17 @@ import { ErrorMessage, useField } from 'formik'
 const TextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
   return (
-    <div>
+    <div className="flex-grow">
       {label && (
-        <label className="" htmlFor={field.name}>
+        <label
+          className="body-md text-mediumGrey dark:text-white block"
+          htmlFor={field.name}>
           {label}
         </label>
       )}
-      <div>
+      <div className="relative">
         <input
-          className={`${
+          className={` flex-1 bg-white body-lg w-full px-4 my-2 block rounded border text-black border-mediumGrey border-opacity-25 placeholder:opacity-25 focus:border-mainPurple dark:bg-darkGrey dark:text-white ${
             meta.touched && meta.error && 'border-opacity-100 border-mainRed'
           }`}
           {...field}

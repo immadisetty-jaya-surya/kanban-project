@@ -4,13 +4,13 @@ import { motion } from 'framer-motion'
 const BoardContainer = () => {
   const { boards, currentBoard, setActiveBoard } = useBoards()
   return (
-    <div>
-      <h3>all boards({boards.length}) </h3>
-      <div>
+    <div className="flex-1 w-full">
+      <h3 className="heading-sm ml-6 uppercase">all boards({boards.length})</h3>
+      <div className="mt-8">
         {boards.map((board, i) => (
           <div
             key={i}
-            className={`${
+            className={`group text-mediumGrey cursor-pointer flex space-x-3 items-center pl-6 w-11/12 transition duration-500 bg-opacity-0 bg-purple-400 dark:hover:bg-white rounded-r-full hover:bg-opacity-10 hover:text-mainPurple ${
               currentBoard.name === boards[i].name && 'active-board'
             }`}
             onClick={() => setActiveBoard(i)}>
@@ -22,7 +22,7 @@ const BoardContainer = () => {
             </svg>
             <h3
               key={i}
-              className={`heading-m font-bold text-mediumGrey py-3 group-hover:text-mainPurple ${
+              className={`heading-m font-bold text-mediumGrey py-3 group-hover:text-purple-500 ${
                 currentBoard.name === boards[i].name && 'active-board'
               } `}>
               {board.name}

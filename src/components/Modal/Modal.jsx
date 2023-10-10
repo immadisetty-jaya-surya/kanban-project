@@ -9,7 +9,7 @@ const Modal = ({
   children,
   className = 'items-center justify-center',
 }) => {
-  const [isBrowser, setIsBrowser] = useState(true)
+  const [isBrowser, setIsBrowser] = useState(false)
   const modalRef = useRef()
   useOnClickOutside(modalRef, () => onClose())
   const closeOnEscapeDown = (e) => {
@@ -53,8 +53,12 @@ const Modal = ({
           variants={backdropVariant}
           initial="hidden"
           animate="visible"
-          exit="hidden">
-          <motion.div ref={modalRef} variants={modalVariant}>
+          exit="hidden"
+          className={`modal fixed left-0 right-0 top-0 bottom-0 bg-opacity-50 flex bg-black z-20 ${className}`}>
+          <motion.div
+            className="w-full m-4 max-w-[480px]"
+            ref={modalRef}
+            variants={modalVariant}>
             {children}
           </motion.div>
         </motion.div>

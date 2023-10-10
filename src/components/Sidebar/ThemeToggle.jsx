@@ -12,7 +12,7 @@ const ThemeToggle = () => {
     return null
   }
   return (
-    <div>
+    <div className="rounded flex p-4 w-4/5 mx-6 space-x-6 justify-center items-center bg-lightGrey dark:bg-veryDarkGrey">
       <Image
         src="/icon-light-theme.svg"
         alt="Sun"

@@ -5,14 +5,45 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
+    fontFamily: {
+      sans: ['Plus Jakarta Sans', 'sans-serif'],
+    },
+    fontSize: {
+      base: ['0.8125rem', '1.4375rem'],
+      xl: ['1.5rem', '1.875rem'],
+      lg: ['1.125rem', '1.4375rem'],
+      md: ['0.9375rem', '1.1875rem'],
+      sm: ['0.75rem', '0.9375rem'],
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        black: '#000112',
+        veryDarkGrey: '#20212C',
+        darkGrey: '#2B2C37',
+        darkGreyLine: '#3E3F4E',
+        mediumGrey: '#828fa3',
+        lightGreyLine: '#e4ebfa',
+        lightGrey: '#f4f7fd',
+        mainPurple: '#635FC7',
+        mainPurpleHover: '#A8A4FF',
+        mainRed: '#EA5555',
+        mainRedHover: '#FF9898',
+      },
+      letterSpacing: {
+        widest: '0.15rem',
+      },
+      boxShadow: {
+        main: '0px 4px 6px rgba(54, 78, 126, 0.101545)',
+        secondary: '0px 10px 20px rgba(54, 78, 126, 0.25)',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 }

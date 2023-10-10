@@ -5,7 +5,7 @@ const SidebarToggle = ({ show, setShow }) => {
     <>
       <button
         onClick={() => setShow(!show)}
-        className={`fixed bottom-8 group cursor-pointer flex space-x-3 items-center mt-4 pl-6 w-11/12 transition bg-mainPurple rounded-r-full hover:bg-opacity-0 ${
+        className={`fixed bottom-8 group cursor-pointer flex space-x-3 items-center mt-4 pl-6 w-11/12 transition bg-mainPurple rounded-r-full hover:bg-opacity-10 bg-opacity-0 dark:hover:bg-white dark:hover:text-mainPurple ${
           show
             ? 'left-0 text-mediumGrey'
             : 'left-[300px] h-12 w-16 bg-opacity-100 hover:bg-mainPurpleHover text-white'

@@ -16,7 +16,7 @@ const Board = () => {
   if (!boards.length) return <NoBoardsFound />
   if (!currentBoard.columns.length) return <EmptyBoard.jsx />
   return (
-    <main>
+    <main className="overflow-y-hidden scrollbar-thin scrollbar-thumb-mainPurple scrollbar-track-transparent flex-1 p-4 space-x-7 bg-purple-400 flex">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         {currentBoard.columns.map((column, i) => (
           <Column data={column} key={i}>

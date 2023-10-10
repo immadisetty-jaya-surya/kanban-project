@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import TextInput from '../shared/TextInput'
 import Button from '../shared/Button'
 
-const CreateNewBoardModal = (onClose) => {
+const CreateNewBoardModal = ({ onClose }) => {
   const { createBoard } = useBoards()
 
   const validate = Yup.object({
@@ -31,7 +31,7 @@ const CreateNewBoardModal = (onClose) => {
               label="BoardName"
               name="name"
               type="text"
-              placeholder="learning pyhton "
+              placeholder="learning python "
             />
             <label>board columns</label>
             <FieldArray

@@ -1,13 +1,13 @@
 import { useBoards } from '@/context'
 import useWindowSize from '@/hooks/useWindowSize'
-import { Image } from 'next/image'
+import Image from 'next/image'
 import { AnimatePresence } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
-import Modal from '../Modal'
 import MobileBoardMenu from '../Modal/MobileBoardMenu'
 import AddNewTask from './AddNewTask'
 import EditButton from '../shared/EditButton'
+import Modal from '../Modal'
 
 const Header = () => {
   const { width } = useWindowSize()
@@ -15,57 +15,66 @@ const Header = () => {
   const { currentBoard, deleteBoard } = useBoards()
   const { theme } = useTheme()
   return (
-    <header>
-      <div>
+    <header className="p-4 h-[85px] flex bg-purple-200 justify-between items-center border-b border-lightGreyLine ">
+      <div className="flex items-center">
         <AnimatePresence>
           {width <= 768 ? (
             <>
-              <Image
-                src="src/components/Header/slider-minimalistic-horizontal-svgrepo-com.svg"
-                alt="kanban-logo"
-                height={25}
-                width={24}
-              />
-              <button onClick={() => setShowMenu(true)}>
-                <h2>{currentBoard?.name || 'no board found'} </h2>
+              {
+                <Image
+                  src="/logo-mobile.svg"
+                  alt="kanban-logo"
+                  height={25}
+                  width={24}
+                />
+              }
+              <button
+                onClick={() => setShowMenu(true)}
+                className="flex justify-center items-center">
+                <h2 className="heading-lg ml-6 mr-2 text-purple-800">
+                  {currentBoard?.name || 'no board found'}
+                </h2>
                 {showMenu ? (
                   <Image
-                    src="src/components/Header/chevron-up-svgrepo-com.svg"
+                    src="/icon-chevron-up.svg"
                     alt="chevron"
                     height={4}
                     width={8}
                   />
                 ) : (
                   <Image
-                    src="src/components/Header/chevron-down-svgrepo-com.svg"
+                    src="/icon-chevron-down.svg"
                     alt="chevron"
                     height={4}
                     width={8}
                   />
                 )}
               </button>
-              <Modal show={showMenu} onClose={() => setShowMenu(!showMenu)}>
+              <Modal
+                show={showMenu}
+                onClose={() => setShowMenu(!showMenu)}
+                className={'align-start pt-20 px-12'}>
                 <MobileBoardMenu />
               </Modal>
             </>
           ) : (
             <>
-              <div>
+              <div className="w-[260px] lg:w-[300px] p-8 box-border transition-all ease border-r-lightGreyLine dark:border-r-darkGreyLine">
                 <Image
-                  src={theme === 'dark' ? 'light' : 'dark'}
+                  src={theme === 'dark' ? '/logo-light.svg' : '/logo-dark.svg'}
                   alt="kanban-logo"
                   height={25}
                   width={152}
                 />
               </div>
-              <h2 className="heading-lg ml-5">
-                {currentBoard?.name || 'no board found'}{' '}
+              <h2 className="heading-lg ml-5 mr-2">
+                {currentBoard?.name || 'no board found'}
               </h2>
             </>
           )}
         </AnimatePresence>
       </div>
-      <div>
+      <div className="flex items-center gap-4 md:pr-4">
         <AddNewTask />
         <EditButton
           onConfirm={() => deleteBoard(currentBoard.id)}
