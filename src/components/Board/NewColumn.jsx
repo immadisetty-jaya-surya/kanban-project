@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from '../Modal'
+import Modal from '../Board'
 import CreateNewColumnModal from '../Modal/CreateNewColumnModal'
 
 const NewColumn = () => {

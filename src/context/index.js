@@ -26,12 +26,12 @@ function BoardProvider({ children }) {
     task.slug = stringToSlug(task.title)
     console.log(task)
     column.tasks.push(task.id)
-    currentBoard.task.push(task)
+    currentBoard.tasks.push(task)
     setBoards([...boards])
   }
   const createColumn = (column) => {
     column.id = uuidv4()
-    column.task = []
+    column.tasks = []
     currentBoard.columns.push(column)
     setBoards([...boards])
   }
@@ -39,13 +39,13 @@ function BoardProvider({ children }) {
     console.log('HIIIIIIII')
     board.id = uuidv4()
     let newColumns = []
-    newColumns = board.column.filter((e) => e)
+    newColumns = board.columns.filter((e) => e)
     newColumns.length
       ? (newColumns = newColumns.map((column) => {
           return {
             id: uuidv4(),
             name: column,
-            task: [],
+            tasks: [],
             slug: stringToSlug(column),
           }
         }))

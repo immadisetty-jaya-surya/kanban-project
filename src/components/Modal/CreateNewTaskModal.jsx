@@ -40,13 +40,13 @@ const CreateNewTaskModal = ({ onclose }) => {
           <Form>
             <TextInput
               label="Title"
-              name="Title"
+              name="title"
               type="text"
               placeholder="e.g. take a break and drink coffee"
             />
             <TextArea
               label="description"
-              name="title"
+              name="description"
               type="text"
               placeholder="e.g. It`s always good to take a break. This 15 minute break will refresh your brain"
             />

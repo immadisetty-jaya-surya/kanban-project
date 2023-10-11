@@ -8,7 +8,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 const UpdatingBoardModal = ({ onConfirm }) => {
   const { updateBoard, currentBoard } = useBoards()
-  const [columns, setColumns] = useState(currentBoard.columns)
+  const [columns, setColumns] = useState(
+    currentBoard.columns.map((name) => ({ name, slug: '', tasks: [] }))
+  )
   const validate = Yup.object({
     name: Yup.string().required('cannot keep empty'),
     columns: Yup.array().of(
@@ -46,15 +48,19 @@ const UpdatingBoardModal = ({ onConfirm }) => {
                   {formik.values.columns.map((_, i) => (
                     <div key={i}>
                       <TextInput
-                        name={`columns[${i}]`}
+                        name={`columns[${i}].name`}
                         type="text"
-                        placeholder="archivedd"
+                        placeholder="archived"
                       />
                       <Button onClick={() => arrayHelpers.remove(i)}>
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 384 512">
-                          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                          width="15"
+                          height="15"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <g fill="currentColor" fillRule="evenodd">
+                            <path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" />
+                            <path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
+                          </g>
                         </svg>
                       </Button>
                     </div>
@@ -68,7 +74,7 @@ const UpdatingBoardModal = ({ onConfirm }) => {
                         tasks: [],
                       })
                     }>
-                    + add new column{' '}
+                    + add new column
                   </Button>
                   <Button type="submit"> save changes</Button>
                 </div>

@@ -38,8 +38,8 @@ const CreateNewBoardModal = ({ onClose }) => {
               name="columns"
               render={(arrayHelpers) => (
                 <div>
-                  {formik.values.columns.map((_, i) => (
-                    <div key={i}>
+                  {formik.values.columns.map((column, i) => (
+                    <div key={column}>
                       <TextInput
                         name={`columns[${i}]`}
                         type="text"

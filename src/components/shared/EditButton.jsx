@@ -14,7 +14,7 @@ const EditButton = ({
   className = '',
 }) => {
   const [showMenu, setShowMenu] = useState(false)
-  const [showUpdateBoardModel, setShowUpdateBoardModel] = useState(false)
+  const [showUpdateBoardModal, setShowUpdateBoardModal] = useState(false)
   const [showDeleteBoardModal, setShowDeleteBoardModal] = useState(false)
   const menuRef = useRef()
   useOnClickOutside(menuRef, () => setShowMenu(false))
@@ -56,15 +56,15 @@ const EditButton = ({
             <button
               className="text-mediumGrey"
               onClick={() => {
-                setShowUpdateBoardModel(!showUpdateBoardModel)
+                setShowUpdateBoardModal(!showUpdateBoardModal)
               }}>
               edit {type}
             </button>
             <Modal
-              show={showUpdateBoardModel}
-              onClose={() => setShowUpdateBoardModel(!showUpdateBoardModel)}>
+              show={showUpdateBoardModal}
+              onClose={() => setShowUpdateBoardModal(!showUpdateBoardModal)}>
               <UpdatingBoardModal
-                onConfirm={() => setShowUpdateBoardModel(!showUpdateBoardModel)}
+                onConfirm={() => setShowUpdateBoardModal(!showUpdateBoardModal)}
               />
             </Modal>
             <button

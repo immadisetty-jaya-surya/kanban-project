@@ -7,7 +7,7 @@ import { useState } from 'react'
 import MobileBoardMenu from '../Modal/MobileBoardMenu'
 import AddNewTask from './AddNewTask'
 import EditButton from '../shared/EditButton'
-import Modal from '../Modal'
+import Modal from 'src/components/Modal/Modal.jsx'
 
 const Header = () => {
   const { width } = useWindowSize()

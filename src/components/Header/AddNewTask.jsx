@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 // import Modal from 'src/components/Modal'
 import CreateNewTaskModal from '../Modal/CreateNewTaskModal'
-import Modal from '../Modal'
+import Modal from 'src/components/Modal/Modal.jsx'
 
 const AddNewTask = () => {
   const [openTaskModal, setOpenTaskModal] = useState(false)
