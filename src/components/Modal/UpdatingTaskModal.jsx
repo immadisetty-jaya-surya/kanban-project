@@ -15,7 +15,7 @@ const UpdatingTaskModal = ({ data, close }) => {
   const validate = Yup.object({
     title: Yup.string().required('cannot keep empty'),
     description: Yup.string().required('cannot keep empty'),
-    subtasks: Yup.array.of(
+    subtasks: Yup.array().of(
       Yup.object({
         title: Yup.string().required('cannot keep empty'),
       })

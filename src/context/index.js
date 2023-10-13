@@ -15,6 +15,7 @@ function BoardProvider({ children }) {
 
   const createTask = (task) => {
     task.id = uuidv4()
+    console.log(task.id)
     const column = columns.find((column) => column.name === task.status)
     task.status = column.name
     task.subtasks = task.subtasks.map((subtasks) => {
@@ -31,6 +32,7 @@ function BoardProvider({ children }) {
   }
   const createColumn = (column) => {
     column.id = uuidv4()
+    console.log(column.id)
     column.tasks = []
     currentBoard.columns.push(column)
     setBoards([...boards])
@@ -38,6 +40,7 @@ function BoardProvider({ children }) {
   const createBoard = (board) => {
     console.log('HIIIIIIII')
     board.id = uuidv4()
+    console.log(board.id)
     let newColumns = []
     newColumns = board.columns.filter((e) => e)
     newColumns.length

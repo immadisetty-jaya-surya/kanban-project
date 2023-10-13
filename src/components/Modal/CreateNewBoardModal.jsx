@@ -7,28 +7,30 @@ import Button from '../shared/Button'
 const CreateNewBoardModal = ({ onClose }) => {
   const { createBoard } = useBoards()
 
-  const validate = Yup.object({
-    name: Yup.string().required('cannot keep empty'),
-    columns: Yup.array().of(Yup.string().required('cannot keep empty')),
+  const validationSchema = Yup.object({
+    name: Yup.string().required('Cannot be empty'),
+    columns: Yup.array().of(Yup.string().required('Cannot be empty')),
   })
+  const initialValueForm = {
+    name: '',
+    columns: ['todo', 'doing'],
+  }
 
   return (
     <Formik
-      initialValues={{
-        name: '',
-        columns: ['todo', 'doing'],
-      }}
-      validationSchema={validate}
+      initialValues={initialValueForm}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
+        console.log(values)
         createBoard(values)
         onClose()
       }}>
       {(formik) => (
         <div>
-          <h1>add new board</h1>
+          <h1>Add New Board</h1>
           <Form>
             <TextInput
-              label="BoardName"
+              label="Board Name"
               name="name"
               type="text"
               placeholder="learning python "
@@ -38,18 +40,24 @@ const CreateNewBoardModal = ({ onClose }) => {
               name="columns"
               render={(arrayHelpers) => (
                 <div>
-                  {formik.values.columns.map((column, i) => (
-                    <div key={column}>
+                  {formik.values.columns.map((_, i) => (
+                    <div key={i} className="flex">
                       <TextInput
                         name={`columns[${i}]`}
                         type="text"
-                        placeholder="e.g. archivedd"
+                        placeholder="e.g. archived"
                       />
-                      <Button onClick={() => arrayHelpers.remove(i)}>
+                      <Button
+                        onClick={() => arrayHelpers.remove(i)}
+                        className="text-mediumGrey hover:text-mainRed ml-4">
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 384 512">
-                          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                          width="15"
+                          height="15"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <g fill="currentColor" fillRule="evenodd">
+                            <path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" />
+                            <path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
+                          </g>
                         </svg>
                       </Button>
                     </div>
@@ -60,7 +68,7 @@ const CreateNewBoardModal = ({ onClose }) => {
                 </div>
               )}
             />
-            <Button type="submit">save changes</Button>
+            <Button type="submit">Save Changes</Button>
           </Form>
         </div>
       )}

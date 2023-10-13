@@ -19,22 +19,14 @@ const Board = () => {
     <main className="overflow-y-hidden scrollbar-thin scrollbar-thumb-mainPurple scrollbar-track-transparent flex-1 p-4 space-x-7 bg-purple-400 flex">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         {currentBoard.columns.map((column, i) => (
-          <Droppable droppableId={column.id} key={column.id}>
-            {/* Added droppableId for each column */}
-            {(provided) => (
-              <Column data={column} key={i} provided={provided}>
-                {column.tasks.map((taskId, j) => (
-                  <Draggable draggableId={taskId} index={j} key={taskId}>
-                    {/* Added draggableId for each task */}
-                    {(provided) => (
-                      <Task data={column.tasks} index={j} provided={provided} />
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </Column>
-            )}
-          </Droppable>
+          <Column data={column} key={i}>
+            {column.tasks.map((taskId, j) => {
+              const task = currentBoard.tasks.filter(
+                (task) => task.id === taskId
+              )[0]
+              return <Task data={task} index={j} key={taskId} />
+            })}
+          </Column>
         ))}
       </DragDropContext>
       <NewColumn />

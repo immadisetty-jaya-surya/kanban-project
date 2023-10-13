@@ -13,7 +13,6 @@ const DeletingBoardModal = ({ onConfirm, onClose }) => {
         <button
           onClick={() => {
             onConfirm()
-            onClose()
           }}>
           delete
         </button>

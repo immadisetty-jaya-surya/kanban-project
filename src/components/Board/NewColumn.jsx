@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import Modal from '../Board'
+// import Modal from '../Board'
 import CreateNewColumnModal from '../Modal/CreateNewColumnModal'
+import Modal from '../Modal'
 
 const NewColumn = () => {
   const [openModal, setOpenModal] = useState(false)
