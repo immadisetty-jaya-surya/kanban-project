@@ -8,7 +8,7 @@ const Column = ({ data, children }) => {
   }, [])
   return (
     <div className="column w-[280px] shrink-0">
-      <h3 className="heading-sm uppercase underline mb-0">
+      <h3 className="heading-sm uppercase underline mb-6">
         <span className="task-status inline-block h-3 w-3 rounded-full mr-3">
           {data.name} ({data.tasks.length})
         </span>

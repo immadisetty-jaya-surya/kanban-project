@@ -15,7 +15,7 @@ const Header = () => {
   const { currentBoard, deleteBoard } = useBoards()
   const { theme } = useTheme()
   return (
-    <header className="p-4 h-[85px] flex bg-purple-200 justify-between items-center border-b border-lightGreyLine ">
+    <header className="p-4 h-[85px] flex bg-purple-200 justify-between items-center border-b border-lightGreyLine dark:bg-darkGrey dark:text-white dark:border-darkgreyLine md:p-0">
       <div className="flex items-center">
         <AnimatePresence>
           {width <= 768 ? (
@@ -23,14 +23,14 @@ const Header = () => {
               {
                 <Image
                   src="/logo-mobile.svg"
-                  alt="kanban-logo"
+                  alt="kb-logo"
                   height={25}
                   width={24}
                 />
               }
               <button
-                onClick={() => setShowMenu(true)}
-                className="flex justify-center items-center">
+                className="flex justify-center items-center"
+                onClick={() => setShowMenu(true)}>
                 <h2 className="heading-lg ml-6 mr-2 text-purple-800">
                   {currentBoard?.name || 'no board found'}
                 </h2>
@@ -59,7 +59,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <div className="w-[260px] lg:w-[300px] p-8 box-border transition-all ease border-r-lightGreyLine dark:border-r-darkGreyLine">
+              <div className="w-[260px] lg:w-[300px] p-8 box-border transition-all ease border-r border-r-lightGreyLine dark:border-r-darkGreyLine">
                 <Image
                   src={theme === 'dark' ? '/logo-light.svg' : '/logo-dark.svg'}
                   alt="kanban-logo"

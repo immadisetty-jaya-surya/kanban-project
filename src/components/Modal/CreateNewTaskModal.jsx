@@ -35,8 +35,8 @@ const CreateNewTaskModal = ({ onclose }) => {
         onclose()
       }}>
       {(formik) => (
-        <div>
-          <h1>add new task</h1>
+        <div className="w-full mx-auto p-6 bg-purple-200 rounded-md capitalize md:p-8 dark:bg-darkGrey">
+          <h1 className="heading-lg mb-6">add new task</h1>
           <Form>
             <TextInput
               label="Title"
@@ -52,7 +52,11 @@ const CreateNewTaskModal = ({ onclose }) => {
             />
             <InputArray label="subtasks" array={formik.values.subtasks} />
             <StatusDropdown status={status} setStatus={setStatus} />
-            <Button type="submit">+ add new task </Button>
+            <Button
+              type="submit"
+              className="mt-6 font-semibold w-full bg-blue-950 text-white bg-opacity-50 capitalize text-base rounded-full p-2 transition duration-200 hover:bg-opacity-75">
+              + add new task
+            </Button>
           </Form>
         </div>
       )}

@@ -30,7 +30,8 @@ const InputArray = ({ label, array, ...props }) => {
             ))}
             <Button
               onClick={() => arrayHelpers.push({ title: '' })}
-              className="w-full bg-mainPurple bg-opacity-10 text-mainPurple bold rounded-full capitalize p-2 pt-3 mt-3 transition duration-200 hover:bg-opacity-25 dark:bg-opacity-100 dark:bg-white">
+              className="mt-6 w-full bg-blue-950 text-white bg-opacity-50 capitalize text-base font-semibold rounded-full p-2 transition duration-200 hover:bg-opacity-75">
+              {/* w-full bg-mainPurple bg-opacity-10 text-mainPurple bold rounded-full capitalize p-2 pt-3 mt-3 transition duration-200 hover:bg-opacity-25 dark:bg-opacity-100 dark:bg-white */}
               + add new subtask
             </Button>
           </div>

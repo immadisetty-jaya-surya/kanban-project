@@ -1,14 +1,16 @@
-import { useBoards } from '@/context'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import TextInput from '../shared/TextInput'
-import Button from '../shared/Button'
+import Button from 'src/components/shared/Button.jsx'
+import TextInput from 'src/components/shared/TextInput.jsx'
+import { useBoards } from 'src/context'
 
-const CreateNewColumnModal = ({ onClose }) => {
+const AddNewColumnModal = ({ onClose }) => {
   const { createColumn } = useBoards()
+
   const validate = Yup.object({
-    name: Yup.string().required('cannot keep empty'),
+    name: Yup.string().required("Can't be empty"),
   })
+
   return (
     <Formik
       initialValues={{
@@ -20,21 +22,25 @@ const CreateNewColumnModal = ({ onClose }) => {
         onClose()
       }}>
       {(formik) => (
-        <div>
-          <h1>add new column</h1>
+        <div className="w-full mx-auto rounded-md p-6 bg-purple-200 dark:bg-darkGrey md:p-8">
+          <h1 className="heading-lg mb-6">Add New Column</h1>
           <Form>
             <TextInput
               label="Name"
-              name="Name"
+              name="name"
               type="text"
-              placeholder="e.g. archived anta"
+              placeholder="e.g. Archived"
             />
-            <Button type="submit">add new column</Button>
+
+            <Button
+              type="submit"
+              className="mt-6 w-full bg-blue-950 bg-opacity-50 text-white text-base rounded-full p-2 transition duration-200 hover:bg-opacity-75">
+              + Add New Column
+            </Button>
           </Form>
         </div>
       )}
     </Formik>
   )
 }
-
-export default CreateNewColumnModal
+export default AddNewColumnModal

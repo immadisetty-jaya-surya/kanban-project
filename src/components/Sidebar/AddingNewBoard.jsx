@@ -1,6 +1,7 @@
+'use client'
 import React, { useState } from 'react'
 import Modal from '../Modal'
-import CreateNewBoardModal from '../Modal/CreateNewBoardModal'
+import CreateNewBoardModal from 'src/components/Modal/CreateNewBoardModal.jsx'
 
 const AddingNewBoard = () => {
   const [open, setOpen] = useState(false)

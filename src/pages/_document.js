@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title> kanban-project </title>
+          <title>kanban-managing-project </title>
         </Head>
         <body>
           <Main />

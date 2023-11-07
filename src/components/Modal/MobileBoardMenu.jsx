@@ -1,17 +1,19 @@
 import { useBoards } from '@/context'
-import AddingNewBoard from '../Sidebar/AddingNewBoard'
-import ThemeToggle from '../Sidebar/ThemeToggle'
+import AddingNewBoard from '../Sidebar/AddingNewBoard.jsx'
+import ThemeToggle from '../Sidebar/ThemeToggle.jsx'
 
 const MobileBoardMenu = () => {
   const { boards, currentBoard, setActiveBoard } = useBoards()
   return (
-    <div>
-      <h3>all boards({boards.length}) </h3>
-      <div>
+    <div className="bg-white dark:bg-darkGrey rounded-lg py-6">
+      <h3 className="heading-sm ml-6 uppercase text-blue-950 pb-3 ">
+        all boards({boards.length})
+      </h3>
+      <div className="mt-8 mb-4">
         {boards.map((board, i) => (
           <div
             key={i}
-            className={`group text-mediumGrey cursor-pointer flex space-x-3 items-center pl-6 w-11/12 transition duration-500 bg-opacity-0 bg-mainPurple dark:hover:bg-white rounded-r-full hover:bg-opacity-10 hover:text-mainPurple ${
+            className={`group text-mediumGrey cursor-pointer flex space-x-3 items-center pl-6 w-11/12 transition duration-500 bg-opacity-0 bg-purple-400 dark:hover:bg-white rounded-r-full hover:bg-opacity-10 hover:text-purple-400 ${
               currentBoard.name === boards[i].name && 'active-board'
             } `}
             onClick={() => setActiveBoard(i)}>

@@ -1,3 +1,4 @@
+'use client'
 import { useBoards } from '@/context'
 import { Formik, Form, FieldArray } from 'formik'
 import * as Yup from 'yup'
@@ -26,8 +27,8 @@ const CreateNewBoardModal = ({ onClose }) => {
         onClose()
       }}>
       {(formik) => (
-        <div>
-          <h1>Add New Board</h1>
+        <div className="w-full mx-auto rounded-md p-6 bg-purple-200 dark:bg-darkGrey md:p-8">
+          <h1 className="heading-lg mb-6">Add New Board</h1>
           <Form>
             <TextInput
               label="Board Name"
@@ -35,7 +36,9 @@ const CreateNewBoardModal = ({ onClose }) => {
               type="text"
               placeholder="learning python "
             />
-            <label>board columns</label>
+            <label className="body-md capitalize dark:text-white mt-6 block">
+              board columns
+            </label>
             <FieldArray
               name="columns"
               render={(arrayHelpers) => (
@@ -62,13 +65,19 @@ const CreateNewBoardModal = ({ onClose }) => {
                       </Button>
                     </div>
                   ))}
-                  <Button onClick={() => arrayHelpers.push('')}>
+                  <Button
+                    onClick={() => arrayHelpers.push('')}
+                    className="w-full capitalize bg-blue-950 bg-opacity-50 text-white font-bold rounded-full p-2 pt-3 mt-3 transition duration-200 hover:bg-opacity-70 dark:bg-opacity-100 dark:bg-white">
                     + add new column
                   </Button>
                 </div>
               )}
             />
-            <Button type="submit">Save Changes</Button>
+            <Button
+              type="submit"
+              className="w-full capitalize bg-blue-950 bg-opacity-50 text-white font-bold rounded-full p-2 pt-3 mt-3 transition duration-200 hover:bg-opacity-70 dark:bg-opacity-100 dark:bg-white">
+              Save Changes
+            </Button>
           </Form>
         </div>
       )}

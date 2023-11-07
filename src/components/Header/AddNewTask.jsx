@@ -13,12 +13,14 @@ const AddNewTask = () => {
     <>
       {width > 768 ? (
         <button
-          className="btn btn__primary btn-lg"
+          className="btn btn__primary btn-lg bg-purple-500 p-4 m-6 capitalize font-semibold"
           onClick={() => setOpenTaskModal(true)}>
           + add new task
         </button>
       ) : (
-        <button className="btn btn__primary px-5 flex justify-center items-center bg-purple-800">
+        <button
+          className="btn btn__primary px-5 flex justify-center items-center bg-purple-400"
+          onClick={() => setOpenTaskModal(true)}>
           <Image
             src="/icon-add-task-mobile.svg"
             alt="plus-icon"

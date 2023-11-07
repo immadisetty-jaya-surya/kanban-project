@@ -1,3 +1,4 @@
+'use client'
 const Button = ({
   type = 'submit',
   className = '',
@@ -15,3 +16,4 @@ const Button = ({
     </button>
   )
 }
+export default Button

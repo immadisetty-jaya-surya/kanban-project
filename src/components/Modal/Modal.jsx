@@ -1,4 +1,4 @@
-import useOnClickOutside from '@/hooks/useOnClickOutside'
+import useOnClickOutside from 'src/hooks/useOnClickOutside.js'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'

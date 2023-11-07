@@ -1,5 +1,6 @@
 import { useBoards } from '@/context'
-import { motion } from 'framer-motion'
+import AddingNewBoard from './AddingNewBoard'
+// import { motion } from 'framer-motion'
 
 const BoardContainer = () => {
   const { boards, currentBoard, setActiveBoard } = useBoards()
@@ -29,6 +30,7 @@ const BoardContainer = () => {
             </h3>
           </div>
         ))}
+        <AddingNewBoard />
       </div>
     </div>
   )

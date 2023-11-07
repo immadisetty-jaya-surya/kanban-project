@@ -83,8 +83,8 @@ const EditButton = ({
         ) : (
           <>
             <button
-              onClick={() => switchToUpdate()}
-              className="text-mediumGrey">
+              className="text-mediumGrey"
+              onClick={() => switchToUpdate()}>
               edit {type}
             </button>
             <button onClick={() => switchToDelete()} className="text-mainRed">

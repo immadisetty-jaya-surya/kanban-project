@@ -103,7 +103,7 @@ function BoardProvider({ children }) {
     const column = columns.find((column) => column.name === status)
     const prevColumn = columns.find((column) => column.name === task.status)
     prevColumn.tasks = prevColumn.tasks.filter((id) => id !== taskId)
-    column.task.push(taskId)
+    column.tasks.push(taskId)
     task.status = column.name
     setBoards([...boards])
   }
@@ -119,36 +119,49 @@ function BoardProvider({ children }) {
     setActiveBoard(0)
     setBoards(boards.filter((board) => board.id !== boardId))
   }
+  // once check this code
   const dragTask = (source, destination) => {
     if (!destination) {
       return
     }
+
     if (
       source.droppableId === destination.droppableId &&
       source.index === destination.index
     ) {
       return
     }
-    if (source.droppableId === destination.droppableId) {
-      const column = columns.find(
-        (column) => column.name === source.droppableId
-      )
-      const taskId = column.tasks[source.index]
-      column.tasks.splice(source.index, 1)
-      column.tasks.splice(destination.index, 0, taskId)
-      setBoards([...boards])
-    } else {
-      const column = columns.find(
-        (column) => column.name === destination.droppableId
-      )
-      const taskId = column.tasks[source.index]
-      const draggedTask = currentBoard.tasks.find((task) => task.id === taskId)
-      draggedTask.status = destination.droppableId
-      column.tasks.splice(source.index, 1)
-      column.tasks.splice(destination.index, 0, taskId)
-      setBoards([...boards])
+
+    const sourceColumn = columns.find(
+      (column) => column.name === source.droppableId
+    )
+    const destinationColumn = columns.find(
+      (column) => column.name === destination.droppableId
+    )
+
+    if (!sourceColumn || !destinationColumn) {
+      return
     }
+
+    const taskId = sourceColumn.tasks[source.index]
+    const draggedTask = currentBoard.tasks.find((task) => task.id === taskId)
+
+    if (!draggedTask) {
+      return
+    }
+
+    if (source.droppableId === destination.droppableId) {
+      sourceColumn.tasks.splice(source.index, 1)
+      sourceColumn.tasks.splice(destination.index, 0, taskId)
+    } else {
+      draggedTask.status = destination.droppableId
+      sourceColumn.tasks.splice(source.index, 1)
+      destinationColumn.tasks.splice(destination.index, 0, taskId)
+    }
+
+    setBoards([...boards])
   }
+  // to here
   const value = {
     boards,
     setBoards,
@@ -171,7 +184,7 @@ function BoardProvider({ children }) {
 const useBoards = () => {
   const context = useContext(BoardContext)
   if (context === undefined) {
-    throw new Error('useBoards must be used within a board provider')
+    throw new Error('useBoards must be used within a BoardProvider')
   }
   return context
 }

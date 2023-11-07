@@ -6,9 +6,9 @@ import { useState } from 'react'
 export default function Home() {
   const [showSidebar, setShowSidebar] = useState(true)
   return (
-    <div>
+    <div className="h-screen">
       <Header sidebarVisible={setShowSidebar} />
-      <div>
+      <div className="flex board-height">
         <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         <Board />
       </div>

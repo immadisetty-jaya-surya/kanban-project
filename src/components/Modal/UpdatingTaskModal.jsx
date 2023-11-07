@@ -32,8 +32,8 @@ const UpdatingTaskModal = ({ data, close }) => {
         close()
       }}>
       {(formik) => (
-        <div>
-          <h1>edit task</h1>
+        <div className="w-full capitalize mx-auto rounded-md p-6 bg-purple-200 dark:bg-darkGrey md:p-8">
+          <h1 className="heading-lg mb-6 capitalize">edit task</h1>
           <Form>
             <TextInput
               label="title"
@@ -49,7 +49,12 @@ const UpdatingTaskModal = ({ data, close }) => {
             />
             <InputArray label="subtasks" array={formik.values.subtasks} />
             <StatusDropdown status={status} setStatus={setStatus} />
-            <Button type="submit">save changes</Button>
+            <Button
+              type="submit"
+              className="mt-6 w-full bg-blue-950 capitalize font-semibold text-white text-base p-2 rounded-full bg-opacity-50 transition duration-200 hover:bg-opacity-75">
+              save changes
+            </Button>
+            {/* mt-6 w-full bg-mainPurple text-white text-base rounded-full p-2 transition duration-200 hover:bg-mainPurpleHover */}
           </Form>
         </div>
       )}

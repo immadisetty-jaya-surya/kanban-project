@@ -20,7 +20,6 @@ const ThemeToggle = () => {
         width={18}
         onClick={() => setTheme('light')}
       />
-      <h5>light</h5>
       <label
         htmlFor="default-toggle"
         className="w-16 inline-flex relative items-center cursor-pointer">
@@ -29,12 +28,11 @@ const ThemeToggle = () => {
           value=""
           id="default-toggle"
           className="sr-only peer"
-          onChange={() => setTheme(theme === 'light' ? 'light' : 'dark')}
+          onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           checked={theme === 'light'}
         />
-        <div className="w-10 h-5 bg-mainPurpleHover rounded-full peer peer-checked:after:translate-x-5 dark:bg-mainPurpleHover  peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-mainPurple"></div>
+        <div className="w-10 h-5 bg-mainPurpleHover rounded-full peer peer-checked:after:translate-x-5 dark:bg-mainPurpleHover  peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-purple-300"></div>
       </label>
-      <h5>dark-moon</h5>
       <Image
         src="/icon-dark-theme.svg"
         alt="Moon"
